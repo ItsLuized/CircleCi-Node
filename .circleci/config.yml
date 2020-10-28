@@ -20,6 +20,8 @@ workflows:
     jobs:
       - node/test
       - deploy:
+          requires:
+            - node/test
           filters:
             branches:
               only: master
