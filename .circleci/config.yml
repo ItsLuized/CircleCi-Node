@@ -1,0 +1,27 @@
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+
+jobs:
+  deploy:
+    docker:
+      - image: ubuntu:latest
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+          - "e7:12:2b:19:02:b0:3c:9c:12:4f:59:7c:f6:94:f4:be"
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST "cd CircleCi-Node/ && git pull && npm start"
+
+workflows:
+  test_and_deploy:
+    jobs:
+      - node/test
+      - deploy:
+          filters:
+            branches:
+              only: 
+                -master
+
