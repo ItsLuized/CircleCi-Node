@@ -16,7 +16,7 @@ jobs:
             ssh $SSH_USER@$SSH_HOST "cd CircleCi-Node/ && git pull && npm start"
 
 workflows:
-  test_and_deploy:
+  node-tests:
     jobs:
       - node/test
       - deploy:
