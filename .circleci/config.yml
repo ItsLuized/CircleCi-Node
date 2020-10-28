@@ -18,7 +18,6 @@ jobs:
 workflows:
   node-tests:
     jobs:
-      - node/test
       - deploy:
           filters:
             branches:
