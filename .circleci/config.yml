@@ -4,8 +4,8 @@ orbs:
 
 jobs:
   deploy:
-    docker:
-      - image: ubuntu:latest
+    machine:
+      enabled: true
     steps:
       - add_ssh_keys:
           fingerprints:
