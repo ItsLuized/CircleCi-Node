@@ -16,11 +16,11 @@ jobs:
             ssh $SSH_USER@$SSH_HOST "cd CircleCi-Node/ && git pull && npm start"
 
 workflows:
-  node-tests:
+  test_and_deploy:
     jobs:
+      - node/test
       - deploy:
           filters:
             branches:
-              only: 
-                -master
+              only: master
 
