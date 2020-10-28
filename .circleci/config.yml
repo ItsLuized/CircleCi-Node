@@ -13,16 +13,17 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSG_HOST "cd CircleCi-Node/ && git pull && npm start"
+            ssh $SSH_USER@$SSH_HOST "cd CircleCi-Node/ && git pull && npm start"
 
 workflows:
   node-tests:
     jobs:
       - node/test
-  deploy:
+  deploy_to_AWS:
     jobs:
-      - deploy:
-          filters:
-            branches:
-              only: master # only deploy on the master branch
+    - deploy:
+        filters:
+          branches:
+            only: 
+              -master
 
