@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST "pwd && ls -all && cd CircleCi-Node && git pull && npm start"
+            ssh $SSH_USER@$SSH_HOST "pm2 delete server && cd CircleCi-Node && git pull && npm start"
 
 workflows:
   test_and_deploy:
